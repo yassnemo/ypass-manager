@@ -1,9 +1,9 @@
 package com.myapp.passwordmanager;
 
 public class PasswordEntry {
-    private String platform;  // e.g., "Gmail", "Facebook"
-    private String username;  // e.g., "user@example.com"
-    private String encryptedPassword;  // Encrypted password
+    private String platform;
+    private String username;
+    private String encryptedPassword;
 
     // Constructor
     public PasswordEntry(String platform, String username, String encryptedPassword) {
@@ -39,8 +39,6 @@ public class PasswordEntry {
 
     @Override
     public String toString() {
-        return "Platform: " + platform + "\n" +
-               "Username: " + username + "\n" +
-               "Encrypted Password: " + encryptedPassword;
+        return "Platform: " + platform + ", Username: " + username + ", Encrypted Password: " + encryptedPassword;
     }
 }

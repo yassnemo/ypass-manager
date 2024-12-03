@@ -1,15 +1,21 @@
 package com.myapp.passwordmanager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PasswordManager {
-    // List to store password entries
     private List<PasswordEntry> passwordEntries;
+    private static final String FILE_NAME = "passwords.dat";
 
-    // Constructor
     public PasswordManager() {
-        this.passwordEntries = new ArrayList<>();
+        // Load existing passwords from file
+        File file = new File(FILE_NAME);
+        if (file.exists()) {
+            passwordEntries = FileUtil.loadPasswordsFromFile(FILE_NAME);
+        } else {
+            passwordEntries = new ArrayList<>();
+        }
     }
 
     // Add a new password entry (with encrypted password)
@@ -47,11 +53,16 @@ public class PasswordManager {
     // Display all password entries (for testing purposes)
     public void displayAllPasswords() {
         for (PasswordEntry entry : passwordEntries) {
-            // Decrypt and display the password
             String decryptedPassword = EncryptionUtil.decrypt(entry.getEncryptedPassword());
             System.out.println("Platform: " + entry.getPlatform() +
                                ", Username: " + entry.getUsername() +
                                ", Password: " + decryptedPassword);
         }
     }
+
+    // Save passwords to file before exit
+    public void savePasswords() {
+        FileUtil.savePasswordsToFile(passwordEntries, FILE_NAME);
+    }
 }
+

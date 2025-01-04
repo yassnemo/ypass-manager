@@ -1,20 +1,31 @@
 plugins {
-    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.14' // JavaFX plugin
 }
 
 repositories {
-    mavenCentral()  // Download dependencies from Maven Central repository
+    mavenCentral()
 }
 
 dependencies {
-    // JavaFX dependency (replace with the version you're using)
-    implementation 'org.openjfx:javafx-controls:21'
+    implementation 'org.openjfx:javafx-controls:19.0.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
 
-    // JUnit dependency for unit testing
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+application {
+    mainClass = 'com.myapp.passwordmanager.Main' // Update to your main class
+}
+
+javafx {
+    version = "19.0.2"
+    modules = [ 'javafx.controls' ]
 }
 
 test {
-    useJUnitPlatform()  // Enables JUnit 5 testing platform
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
 }

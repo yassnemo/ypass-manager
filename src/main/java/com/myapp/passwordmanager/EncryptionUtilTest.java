@@ -2,6 +2,7 @@ package com.myapp.passwordmanager;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 

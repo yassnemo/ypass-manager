@@ -65,4 +65,3 @@ public class PasswordManager {
         FileUtil.savePasswordsToFile(passwordEntries, FILE_NAME);
     }
 }
-
